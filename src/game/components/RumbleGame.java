@@ -116,9 +116,12 @@ public class RumbleGame {
     }
 
     public void startGame() {
+    	final int ONE_AND_HALF_SECONDS = 1500;
+    	int gameCooldownMillis = ONE_AND_HALF_SECONDS;
+    	
         while(loopGame) {
             try {
-                Thread.sleep(1500);
+                Thread.sleep(gameCooldownMillis);
                 this.nextRound();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

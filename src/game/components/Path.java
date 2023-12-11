@@ -23,7 +23,45 @@ public class Path {
         		);
     }
 
-    public void nextRound(Long playerId, Castle castle) {
+    private void informBattle(String slotName, Monster attacking, Monster defending) {
+    	System.out.println("Casilla " + slotName + " Esta ocupada!!!");
+        System.out.println("Monstruo " + attacking + " Ataca a " + defending);
+    }
+    
+    private void moveOrBattle(PathBox currentBox, PathBox nextBox) {
+    	if (nextBox.getMonster() == null) {
+        	currentBox.getMonster().move(currentBox, nextBox);
+        
+        } else {
+        	// there is a monster => battle
+        	Monster ownedMonster = currentBox.getMonster();
+        	Monster enemyMonster = nextBox.getMonster();
+        	
+            informBattle(nextBox.getName(), ownedMonster, enemyMonster);
+            ownedMonster.attack(enemyMonster);
+            enemyMonster.attack(ownedMonster);
+            
+            
+            if (enemyMonster.getLife() <= 0) {
+            	// enemy died
+            	nextBox.setMonster(null);
+            }
+        }
+    }
+    
+    private void marchForward(Castle enemyCastle, PathBox currentBox, PathBox nextBox) {
+    	boolean arrivedAtCastle = (nextBox == null);
+    	if (arrivedAtCastle) {
+    		enemyCastle.setLife(enemyCastle.getLife() - 1);
+            currentBox.setMonster(null);
+    	} 
+    	else {
+    		moveOrBattle(currentBox, nextBox);
+    	}
+    		
+    }
+    
+    public void nextRound(Long playerId, Castle enemyCastle) {
         Optional<PathBox> occupiedPathBox =
         		pathBoxes.stream().filter(
         				pathBox -> // filter: Monster exists & Monster is owned by player($playerID)
@@ -31,54 +69,18 @@ public class Path {
         		).findFirst();
         
         if(occupiedPathBox.isPresent()) {
-        	// if PathBox is occupied
+        	// PathBox is occupied by a monster
+        	PathBox currentBox = occupiedPathBox.get();
+        	PathBox advanceDirection;
             if(playerId.equals(1L)) {
-            	// working with player 1
-                if(occupiedPathBox.get().getNorthBox() == null) {
-                	// north box not occupied (arrived @Castle) => damage player & dispose monster
-                    castle.setLife(castle.getLife() - 1);
-                    occupiedPathBox.get().setMonster(null);
-                } else {
-                	// there exists north box (not arrived @Castle)
-                    if(occupiedPathBox.get().getNorthBox().getMonster() == null) {
-                    	// there is no monster, advance
-                        occupiedPathBox.get().getMonster().move(occupiedPathBox.get(), occupiedPathBox.get().getNorthBox());
-                    } else {
-                    	// there is a monster => battle
-                        System.out.println("Casilla " + occupiedPathBox.get().getNorthBox().getName() + " Esta ocupada!!!");
-                        System.out.println("Monstruo " + occupiedPathBox.get().getMonster() + " Ataca a " + occupiedPathBox.get().getNorthBox().getMonster());
-                        occupiedPathBox.get().getMonster().attack(occupiedPathBox.get().getNorthBox().getMonster());
-                        occupiedPathBox.get().getNorthBox().getMonster().attack(occupiedPathBox.get().getMonster());
-                        if(occupiedPathBox.get().getNorthBox().getMonster().getLife() <= 0) {
-                        	// enemy died
-                            occupiedPathBox.get().getNorthBox().setMonster(null);
-                        }
-                    }
-                }
+            	// player 1 advances north
+            	advanceDirection = currentBox.getNorthBox();
             } else {
-            	// working with player 2
-                if(occupiedPathBox.get().getSouthBox() == null) {
-                	// south box not occupied (arrived @Castle) => damage player & dispose monster
-                    castle.setLife(castle.getLife() - 1);
-                    occupiedPathBox.get().setMonster(null);
-                } else {
-                	// there exists south box (not arrived @Castle)
-                    if (occupiedPathBox.get().getSouthBox().getMonster() == null) {
-                    	// there is no monster, advance
-                        occupiedPathBox.get().getMonster().move(occupiedPathBox.get(), occupiedPathBox.get().getSouthBox());
-                    } else {
-                    	// there is a monster => battle
-                        System.out.println("Casilla " + occupiedPathBox.get().getSouthBox().getName() + " Esta ocupada!!!");
-                        System.out.println("Monstruo " + occupiedPathBox.get().getMonster() + " Ataca a " + occupiedPathBox.get().getSouthBox().getMonster());
-                        occupiedPathBox.get().getMonster().attack(occupiedPathBox.get().getSouthBox().getMonster());
-                        occupiedPathBox.get().getSouthBox().getMonster().attack(occupiedPathBox.get().getMonster());
-                        if (occupiedPathBox.get().getSouthBox().getMonster().getLife() <= 0) {
-                        	// enemy died
-                            occupiedPathBox.get().getSouthBox().setMonster(null);
-                        }
-                    }
-                }
+            	// player 2 advances south
+            	advanceDirection = currentBox.getSouthBox();
             }
+            
+            marchForward(enemyCastle, currentBox, advanceDirection);
         }
     }
 
