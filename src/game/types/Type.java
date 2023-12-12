@@ -5,5 +5,10 @@ public enum Type {
     FIRE,
     DEMON,
     SWORD,
-    BEAST
+    BEAST,
+    ANGEL,
+    WATER,
+    METAL,
+    ROCK,
+    WOOD
 }
