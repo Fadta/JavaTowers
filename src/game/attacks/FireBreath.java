@@ -1,14 +1,13 @@
-package entregable.ataques;
+package game.attacks;
 
 import java.util.List;
 
-import game.types.*;
-
+import entregable.ataques.DamageTable;
 import game.components.Monster;
 import game.random.RandomGenerator;
+import game.types.Type;
 
-public class Riptide implements Water {
-
+public class FireBreath implements Fire{
     @Override
     public int damage(Monster monster) {
     	DamageTable tabla = DamageTable.getInstance();
@@ -16,11 +15,11 @@ public class Riptide implements Water {
     	List<Type> tipos = monster.getTypes();
     	int size = tipos.size();
     	
-    	int dmg = RandomGenerator.getInstance().calculateDamage(150, 350);
+    	int dmg = RandomGenerator.getInstance().calculateDamage(200, 300);
     	double dmgMult = 1;
     	
     	for (int i = 0 ; i<=size ; i++) {
-    		dmgMult *= (tabla.getMultiplier(Type.WATER, tipos.get(i)));
+    		dmgMult *= (tabla.getMultiplier(Type.FIRE, tipos.get(i)));
     	}
     	dmg = (int)(dmg*dmgMult);
         return dmg;

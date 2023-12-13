@@ -1,8 +1,7 @@
 import game.components.Monster;
 import game.components.RumbleGame;
-import game.monsters.EvilBeast;
-import game.monsters.IceBeast;
-import game.monsters.Spartan;
+import game.monsters.*;
+import entregable.monstruos.*;
 
 import java.util.Arrays;
 import java.util.List;

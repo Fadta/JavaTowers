@@ -1,5 +1,9 @@
 package game.attacks;
 
+import java.util.List;
+
+import entregable.ataques.DamageTable;
+
 import game.components.Monster;
 import game.random.RandomGenerator;
 import game.types.Type;
@@ -8,10 +12,18 @@ public class ColdBreath implements Cold {
 
     @Override
     public int damage(Monster monster) {
-        int damage = RandomGenerator.getInstance().calculateDamage(90, 150);
-        if(monster.getTypes().contains(Type.FIRE)) {
-            damage = damage * 2;
-        }
-        return damage;
+    	DamageTable tabla = DamageTable.getInstance();
+    	
+    	List<Type> tipos = monster.getTypes();
+    	int size = tipos.size();
+    	
+    	int dmg = RandomGenerator.getInstance().calculateDamage(250, 400);;
+    	double dmgMult = 1;
+    	
+    	for (int i = 0 ; i<=size ; i++) {
+    		dmgMult *= (tabla.getMultiplier(Type.COLD, tipos.get(i)));
+    	}
+    	dmg = (int)(dmg*dmgMult);
+        return dmg;
     }
 }
