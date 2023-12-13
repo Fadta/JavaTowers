@@ -17,9 +17,7 @@ public class TypeComparator extends MonsterComparator {
 		else
 			res = -1;
 		
-		
-		
-		return 0;
+		return res;
 	}
 
 }
