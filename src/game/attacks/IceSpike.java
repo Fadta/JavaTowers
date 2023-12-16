@@ -20,7 +20,7 @@ public class IceSpike implements Cold {
     	int dmg = RandomGenerator.getInstance().calculateDamage(0, 500);;
     	double dmgMult = 1;
     	
-    	for (int i = 0 ; i<=size ; i++) {
+    	for (int i = 0 ; i<size ; i++) {
     		dmgMult *= (tabla.getMultiplier(Type.COLD, tipos.get(i)));
     	}
     	dmg = (int)(dmg*dmgMult);

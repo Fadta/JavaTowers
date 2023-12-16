@@ -19,7 +19,7 @@ public class BranchWhip implements Wood {
     	int dmg = 250;
     	double dmgMult = 1;
     	
-    	for (int i = 0 ; i<=size ; i++) {
+    	for (int i = 0 ; i<size ; i++) {
     		dmgMult *= (tabla.getMultiplier(Type.WOOD, tipos.get(i)));
     	}
     	dmg = (int)(dmg*dmgMult);

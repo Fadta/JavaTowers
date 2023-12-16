@@ -18,7 +18,7 @@ public class SkyBeam implements Angel {
     	int dmg = 250;
     	double dmgMult = 1;
     	
-    	for (int i = 0 ; i<=size ; i++) {
+    	for (int i = 0 ; i<size ; i++) {
     		dmgMult *= (tabla.getMultiplier(Type.ANGEL, tipos.get(i)));
     	}
     	dmg = (int)(dmg*dmgMult);

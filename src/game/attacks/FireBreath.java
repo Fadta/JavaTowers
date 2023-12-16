@@ -18,7 +18,7 @@ public class FireBreath implements Fire{
     	int dmg = RandomGenerator.getInstance().calculateDamage(200, 300);
     	double dmgMult = 1;
     	
-    	for (int i = 0 ; i<=size ; i++) {
+    	for (int i = 0 ; i<size ; i++) {
     		dmgMult *= (tabla.getMultiplier(Type.FIRE, tipos.get(i)));
     	}
     	dmg = (int)(dmg*dmgMult);

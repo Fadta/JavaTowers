@@ -19,7 +19,7 @@ public class Riptide implements Water {
     	int dmg = RandomGenerator.getInstance().calculateDamage(150, 350);
     	double dmgMult = 1;
     	
-    	for (int i = 0 ; i<=size ; i++) {
+    	for (int i = 0 ; i<size ; i++) {
     		dmgMult *= (tabla.getMultiplier(Type.WATER, tipos.get(i)));
     	}
     	dmg = (int)(dmg*dmgMult);

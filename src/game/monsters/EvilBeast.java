@@ -25,6 +25,7 @@ public class EvilBeast extends Monster {
     	this.cursedMult = 0.85;
         this.life = 700;
         this.monsterName = name;
+        this.activeSkill = skills.get(RandomGenerator.getInstance().calculateDamage(0, 2));
         this.types = Arrays.asList(Type.BEAST, Type.DEMON, Type.FIRE);
     }
 

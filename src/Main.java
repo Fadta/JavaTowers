@@ -12,28 +12,26 @@ public class Main {
         rumbleGame.init();
 
         List<Monster> monstersOne = Arrays.asList(new Spartan("Spartan 1"),
-                new Spartan("Spartan 2"),
-                new Spartan("Spartan 3"),
-                new Spartan("Spartan 4"),
-                new Spartan("Spartan 5"),
-                new Spartan("Spartan 6"),
-                new Spartan("Spartan 7"),
-                new Spartan("Spartan 8"),
-                new Spartan("Spartan 9"),
-                new Spartan("Spartan 10"),
+                new EvilBeast("Evil beast 1"),
+                new BlessedEnt("Blessed Ent"),
                 new IceBeast("Ice Beast"),
-                new Spartan("Spartan 24"),
-                new Spartan("Spartan 224"),
-                new Spartan("Spartan 34"),
-                new Spartan("Spartan 44"),
-                new Spartan("Spartan 64"),
-                new Spartan("Spartan 15"));
+                new VolcanoSnail("Volcano Snail"),
+                new Spartan("Spartan 1"),
+                new EvilBeast("Evil beast 1"),
+                new BlessedEnt("Blessed Ent"),
+                new IceBeast("Ice Beast"),
+                new VolcanoSnail("Volcano Snail"));
 
         //TODO ordenar el listado de monstruos que recibe el jugador uno
+        
+        
         rumbleGame.getPlayerOne().setMonsters(monstersOne);
 
-        List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"),
-                new Spartan("Spartan B"));
+        List<Monster> monstersTwo = Arrays.asList(new EvilBeast("Evil beast 1"),
+        		new Spartan("Spartan A"),
+        		new IceBeast("Ice Beast"),
+        		new VolcanoSnail("Volcano Snail"),
+                new BlessedEnt("Blessed Ent"));
 
         //TODO ordenar el listado de monstruos que recibe el jugador dos
         rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
