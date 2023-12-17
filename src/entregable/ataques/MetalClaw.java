@@ -16,7 +16,7 @@ public class MetalClaw implements Metal {
     	List<Type> tipos = monster.getTypes();
     	int size = tipos.size();
     	
-    	int dmg = RandomGenerator.getInstance().calculateDamage(200, 325);
+    	int dmg = RandomGenerator.getInstance().calculateDamage(150, 275);
     	double dmgMult = 1;
     	
     	for (int i = 0 ; i<size ; i++) {

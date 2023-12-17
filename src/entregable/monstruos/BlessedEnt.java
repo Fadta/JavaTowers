@@ -18,7 +18,9 @@ public class BlessedEnt extends Monster{
 
     @Override
     public void attack(Monster enemy) {
-        enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
+        
+    	if (this.life > 0)
+        	enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
     }
     
     @Override

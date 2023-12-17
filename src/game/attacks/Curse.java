@@ -15,7 +15,7 @@ public class Curse implements Demon {
     	List<Type> tipos = monster.getTypes();
     	int size = tipos.size();
     	
-    	int dmg = 300;
+    	int dmg = 200;
     	double dmgMult = 1;
     	
     	for (int i = 0 ; i<size ; i++) {

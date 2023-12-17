@@ -35,9 +35,11 @@ public class Spartan extends Monster {
     
     @Override
     public void attack(Monster enemy) {
-        int damage = this.activeSkill.damage(enemy);
-        System.out.println("--     ["+ this +"] ataca a [" + enemy + "] haciendole " + damage + " de daño");
-        enemy.onDamageReceive(damage, this);
+    	if (this.life > 0) {
+        	int damage = this.activeSkill.damage(enemy);
+        	System.out.println("--     ["+ this +"] ataca a [" + enemy + "] haciendole " + damage + " de daño");
+        	enemy.onDamageReceive(damage, this);
+    	}
     }
     
     @Override

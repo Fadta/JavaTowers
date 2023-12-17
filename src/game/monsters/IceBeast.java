@@ -26,14 +26,17 @@ public class IceBeast extends Monster {
 
     @Override
     public void attack(Monster monster) {
-    	if (ambush) {
-    		int dmg = (int) ((this.activeSkill.damage(monster))*(this.ambushMult));
-    		ambush = false;
-    		monster.onDamageReceive(dmg, this);
-    	}
-    	else {
-        monster.onDamageReceive(this.activeSkill.damage(monster), this);
-    	}
+    	if (this.life > 0) {
+        	if (ambush) {
+        		int dmg = (int) ((this.activeSkill.damage(monster))*(this.ambushMult));
+        		ambush = false;
+        		monster.onDamageReceive(dmg, this);
+        	}
+        	else {
+        		monster.onDamageReceive(this.activeSkill.damage(monster), this);
+        	}
+    	}	
+        
     }
 
     @Override

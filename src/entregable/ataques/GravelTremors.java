@@ -16,7 +16,7 @@ public class GravelTremors implements Rock {
     	List<Type> tipos = monster.getTypes();
     	int size = tipos.size();
     	
-    	int dmg = RandomGenerator.getInstance().calculateDamage(200, 400);
+    	int dmg = RandomGenerator.getInstance().calculateDamage(100, 250);
     	double dmgMult = 1;
     	
     	for (int i = 0 ; i<size ; i++) {

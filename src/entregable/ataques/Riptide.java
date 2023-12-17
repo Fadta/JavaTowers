@@ -16,7 +16,7 @@ public class Riptide implements Water {
     	List<Type> tipos = monster.getTypes();
     	int size = tipos.size();
     	
-    	int dmg = RandomGenerator.getInstance().calculateDamage(150, 350);
+    	int dmg = RandomGenerator.getInstance().calculateDamage(125, 200);
     	double dmgMult = 1;
     	
     	for (int i = 0 ; i<size ; i++) {

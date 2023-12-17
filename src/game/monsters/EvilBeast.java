@@ -31,13 +31,15 @@ public class EvilBeast extends Monster {
 
     @Override
     public void attack(Monster enemy) {
-    	if (ambush) {
-    		int dmg = (int) ((this.activeSkill.damage(enemy))*(this.ambushMult));
-    		ambush = false;
-    		enemy.onDamageReceive(dmg, this);
-    	}
-    	else {
-    		enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
+    	if (this.life > 0) {
+        	if (ambush) {
+        		int dmg = (int) ((this.activeSkill.damage(enemy))*(this.ambushMult));
+        		ambush = false;
+        		enemy.onDamageReceive(dmg, this);
+        	}
+        	else {
+        		enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
+        	}
     	}
     }
     

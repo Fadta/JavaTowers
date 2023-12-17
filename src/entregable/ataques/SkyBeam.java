@@ -15,7 +15,7 @@ public class SkyBeam implements Angel {
     	List<Type> tipos = monster.getTypes();
     	int size = tipos.size();
     	
-    	int dmg = 250;
+    	int dmg = 210;
     	double dmgMult = 1;
     	
     	for (int i = 0 ; i<size ; i++) {

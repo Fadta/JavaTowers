@@ -17,7 +17,7 @@ public class ColdBreath implements Cold {
     	List<Type> tipos = monster.getTypes();
     	int size = tipos.size();
     	
-    	int dmg = RandomGenerator.getInstance().calculateDamage(250, 400);;
+    	int dmg = RandomGenerator.getInstance().calculateDamage(150, 215);;
     	double dmgMult = 1;
     	
     	for (int i = 0 ; i<size ; i++) {
